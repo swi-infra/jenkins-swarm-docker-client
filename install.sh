@@ -4,7 +4,7 @@
 groupadd -g ${gid} ${group}
 useradd -d "${JENKINS_AGENT_HOME}" -u "${uid}" -g "${gid}" -m -s /bin/bash "${user}"
 mkdir -p /usr/share/jenkins
-wget -O /usr/share/jenkins/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar $SWARM_PLUGIN_URL
+wget -q -O /usr/share/jenkins/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar $SWARM_PLUGIN_URL
 chmod -R 755 /usr/share/jenkins
 
 # Install few tools, including git from backports
@@ -36,12 +36,12 @@ DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 # Add Tini
 TINI_VERSION="v0.18.0"
 mkdir -p "/opt/tini"
-wget -O /opt/tini/tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static
+wget -q -O /opt/tini/tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static
 chmod +x /opt/tini/tini
 
 # Install encaps
 cd /tmp
-wget https://github.com/swi-infra/jenkins-docker-encaps/archive/master.zip
+wget -q https://github.com/swi-infra/jenkins-docker-encaps/archive/master.zip
 unzip master.zip
 mv jenkins-docker-encaps-master/encaps* /usr/bin
 rm -rf master.zip jenkins-docker-encaps-master
