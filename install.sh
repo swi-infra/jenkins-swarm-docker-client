@@ -10,7 +10,7 @@ chmod -R 755 /usr/share/jenkins
 # Install few tools, including git from backports
 echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 apt-get update
-apt-get -y install -t stretch-backports git
+apt-get -y install -t stretch-backports git git-lfs
 apt-get -y install net-tools python bzip2 lbzip2 jq netcat-openbsd rsync \
                  apt-transport-https ca-certificates curl software-properties-common
 
