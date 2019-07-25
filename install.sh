@@ -11,8 +11,12 @@ chmod -R 755 /usr/share/jenkins
 echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 apt-get update
 apt-get -y install -t stretch-backports git git-lfs
-apt-get -y install net-tools python bzip2 lbzip2 jq netcat-openbsd rsync \
+apt-get -y install net-tools python bzip2 lbzip2 netcat-openbsd rsync \
                  apt-transport-https ca-certificates curl software-properties-common
+
+# jq v1.6 to support --rawfile
+curl -fsSL https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o /usr/bin/jq
+chmod +x /usr/bin/jq
 
 # Install docker from official repos
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
