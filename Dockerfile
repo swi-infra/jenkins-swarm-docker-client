@@ -1,9 +1,9 @@
-FROM openjdk:8-jre-stretch
+FROM openjdk:11-jre-stretch
 
 MAINTAINER Bertrand Roussel <broussel@sierrawireless.com>
 
 # Release
-ENV JENKINS_SWARM_VERSION 3.17
+ENV JENKINS_SWARM_VERSION 3.23
 ENV SWARM_PLUGIN_URL https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION.jar
 
 # Snapshot
@@ -20,13 +20,13 @@ ARG uid=1000
 ARG gid=1000
 ARG JENKINS_AGENT_HOME=/home/${user}
 
-COPY jenkins-slave.sh /usr/local/bin/jenkins-slave.sh
+COPY jenkins-agent.sh /usr/local/bin/jenkins-agent.sh
 COPY install.sh /tmp/install.sh
 
 RUN /tmp/install.sh
 
 VOLUME /opt/tini
-ENTRYPOINT ["/opt/tini/tini", "--", "/usr/local/bin/jenkins-slave.sh"]
+ENTRYPOINT ["/opt/tini/tini", "--", "/usr/local/bin/jenkins-agent.sh"]
 
 USER ${user}
 VOLUME ${JENKINS_AGENT_HOME}
