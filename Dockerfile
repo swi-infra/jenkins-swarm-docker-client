@@ -1,9 +1,9 @@
-FROM openjdk:11-jre-stretch
+FROM openjdk:11-jre-buster
 
 MAINTAINER Bertrand Roussel <broussel@sierrawireless.com>
 
 # Release
-ENV JENKINS_SWARM_VERSION 3.23
+ENV JENKINS_SWARM_VERSION 3.24
 ENV SWARM_PLUGIN_URL https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION.jar
 
 # Snapshot
