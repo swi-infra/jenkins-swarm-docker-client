@@ -31,7 +31,8 @@ ln -s /usr/bin/lbzip2 bunzip2
 
 # Provide docker group and make the executable accessible (ids from CoreOS & Debian)
 groupadd -g 233 docker2
-usermod -a -G docker,docker2 "${user}"
+groupadd -g 998 docker3
+usermod -a -G docker,docker2,docker3 "${user}"
 
 # Set bash as default shell
 echo "dash dash/sh boolean false" | debconf-set-selections
