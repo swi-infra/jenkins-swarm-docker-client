@@ -1,10 +1,10 @@
-FROM openjdk:11-jre-buster
+FROM eclipse-temurin:21-jre-jammy
 
-MAINTAINER Bertrand Roussel <broussel@sierrawireless.com>
+LABEL maintainer="Central Engineering <central-eng@semtech.com>"
 
-# Release
-ENV JENKINS_SWARM_VERSION 3.24
-ENV SWARM_PLUGIN_URL https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION.jar
+# Release — swarm-client 1250 bundles remoting 3355.v388858a_47b_33 (K8s Jenkins 2.568+)
+ENV JENKINS_SWARM_VERSION=1250.vb_64495a_a_a_28e
+ENV SWARM_PLUGIN_URL=https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION.jar
 
 # Snapshot
 #ENV JENKINS_BUILD lastStableBuild
@@ -30,4 +30,3 @@ ENTRYPOINT ["/opt/tini/tini", "--", "/usr/local/bin/jenkins-agent.sh"]
 
 USER ${user}
 VOLUME ${JENKINS_AGENT_HOME}
-
