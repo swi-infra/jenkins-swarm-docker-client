@@ -3,7 +3,7 @@ FROM eclipse-temurin:21-jre-jammy
 LABEL maintainer="Central Engineering <central-eng@semtech.com>"
 
 # Release — swarm-client 1250 bundles remoting 3355.v388858a_47b_33 (K8s Jenkins 2.568+)
-ENV JENKINS_SWARM_VERSION=1250.vb_64495a_a_a_28e
+ENV JENKINS_SWARM_VERSION=1258.vda_14ddda_0613
 ENV SWARM_PLUGIN_URL=https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION.jar
 
 # Snapshot
